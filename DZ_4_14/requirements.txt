@@ -1,0 +1,10 @@
+pip install blessings==1.7
+pip install colour-runner==0.1.1
+pip install flake8==3.9.2
+pip install mccabe==0.6.1
+pip install prettytable==2.2.1
+pip install pycodestyle==2.7.0
+pip install pyflakes==2.3.1
+pip install Pygments==2.10.0
+pip install six==1.16.0
+pip install wcwidth==0.2.5
