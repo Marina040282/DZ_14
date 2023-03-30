@@ -34,7 +34,7 @@ class UserPassword(Resource):
         password = user.password
         req_json = request.json
         new_password = req_json.get("password", None)
-        if None == new_password:
+        if new_password is None:
             return "", 400
         user_service.update_new_password(password, new_password)
         return "", 200
