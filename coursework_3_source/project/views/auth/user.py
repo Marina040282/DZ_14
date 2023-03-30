@@ -24,3 +24,17 @@ class UserView(Resource):
         return "", 204
 
 
+@user_ns.route('/<int:user_id>/password/')
+class UserPassword(Resource):
+    def put(self, user_id):
+        """
+        Oбновить пароль пользователя
+        """
+        user = user_service.get_one(user_id)
+        password = user.password
+        req_json = request.json
+        new_password = req_json.get("password", None)
+        if None == new_password:
+            return "", 400
+        user_service.update_new_password(password, new_password)
+        return "", 200

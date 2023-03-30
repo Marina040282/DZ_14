@@ -15,6 +15,9 @@ class UserDAO:
     def get_by_email(self, email):
         return self.session.query(User).filter(User.email == email).first()
 
+    def get_by_password(self, password):
+        return self.session.query(User).filter(User.password == password).first()
+
     def get_all(self):
         return self.session.query(User).all()
 
@@ -50,8 +53,14 @@ class UserDAO:
         except IntegrityError:
             raise UserAlreadyExists
 
-    def update_password(self, password, new_password):
-        user = self.get_by_email(password)
+    def update_password(self, email, new_password):
+        user = self.get_by_email(email)
+        user.password = generate_password_hash(new_password)
+        self.session.add(user)
+        self.session.commit()
+
+    def update_new_password(self, password, new_password):
+        user = self.get_by_password(password)
         user.password = generate_password_hash(new_password)
         self.session.add(user)
         self.session.commit()

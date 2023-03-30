@@ -41,7 +41,8 @@ class ProductionConfig(BaseConfig):
 
 
 class ConfigFactory:
-    flask_env = os.getenv('FLASK_ENV')
+    # flask_env = os.getenv('FLASK_ENV')
+    flask_env = "development"
 
     @classmethod
     def get_config(cls) -> Type[BaseConfig]:

@@ -23,7 +23,10 @@ class UserService:
         self.dao.update(user_d)
         return self.dao
 
-    def update_password(self, password, new_password):
+    def update_password(self, email, new_password):
+        self.update_password(email, new_password)
+
+    def update_new_password(self, password, new_password):
         self.update_password(password, new_password)
 
     def delete(self, rid):

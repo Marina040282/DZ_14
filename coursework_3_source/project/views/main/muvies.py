@@ -17,7 +17,7 @@ class MoviesView(Resource):
         Get all movies.
         """
         status = request.args.get('status')
-        return movie_service.get_all(filter=status, **status_page_parser.parse_args())
+        return movie_service.get_all_by_filter(filter=status, **status_page_parser.parse_args())
 
 
 @movies_ns.route('/<int:movie_id>/')
